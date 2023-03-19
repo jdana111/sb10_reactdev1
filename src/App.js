@@ -1,17 +1,18 @@
-import Profile from './Profile';
-import TodoList from './TodoList'
+import Card from './Card';
+import Avatar from './Avatar'
 import './App.css';
 
 function App() {
   return (
-    <section>
-      <h1>Amazing scientists</h1>
-      <Profile />
-      <Profile />
-      <Profile />
-      <TodoList />
-    </section>
-  );
-}
+    <Card>
+      <Avatar
+        size={100}
+        person={{
+          name: 'Katsuko Saruhashi',
+          imageId: 'YfeOqp2'
+        }}
+      />
+    </Card>
+  );}
 
 export default App;
