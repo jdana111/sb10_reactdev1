@@ -1,18 +1,25 @@
-import Card from './Card';
-import Avatar from './Avatar'
+import Item from './Item';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <Card>
-      <Avatar
-        size={100}
-        person={{
-          name: 'Katsuko Saruhashi',
-          imageId: 'YfeOqp2'
-        }}
-      />
-    </Card>
-  );}
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+        />
+      </ul>
+    </section>
+  );
+}
 
-export default App;
