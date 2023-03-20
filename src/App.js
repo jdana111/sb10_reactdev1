@@ -1,24 +1,17 @@
-import { people } from './data.js';
-import { getImageUrl } from './utils.js';
+let guest = 0;
 
-export default function App() {
-  const listItems = people.map(person =>
-    <li key={person.id}>
-      <img
-        src={getImageUrl(person)}
-        alt={person.name}
-      />
-      <p>
-        <b>{person.name}:</b>
-        {' ' + person.profession + ' '}
-        known for {person.accomplishment}
-      </p>
-    </li>
-  );
+function Cup() {
+  // Bad: changing a preexisting variable!
+  guest = guest + 1;
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
   return (
-    <article>
-      <h1>Scientists</h1>
-      <ul>{listItems}</ul>
-    </article>
+    <>
+      <Cup />
+      <Cup />
+      <Cup />
+    </>
   );
 }
