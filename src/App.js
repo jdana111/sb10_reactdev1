@@ -1,20 +1,14 @@
-function Button({ onSmash, children }) {
+export default function Toolbar() {
   return (
-    <button onClick={onSmash}>
-      {children}
-    </button>
-  );
-}
-
-export default function App() {
-  return (
-    <div>
-      <Button onSmash={() => alert('Playing!')}>
+    <div className="Toolbar" onClick={() => {
+      alert('You clicked on the toolbar!');
+    }}>
+      <button onClick={() => alert('Playing!')}>
         Play Movie
-      </Button>
-      <Button onSmash={() => alert('Uploading!')}>
+      </button>
+      <button onClick={() => alert('Uploading!')}>
         Upload Image
-      </Button>
+      </button>
     </div>
   );
 }
