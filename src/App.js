@@ -1,17 +1,8 @@
-let guest = 0;
-
-function Cup() {
-  // Bad: changing a preexisting variable!
-  guest = guest + 1;
-  return <h2>Tea cup for guest #{guest}</h2>;
-}
-
-export default function TeaSet() {
+export default function Profile() {
   return (
-    <>
-      <Cup />
-      <Cup />
-      <Cup />
-    </>
-  );
+    <img
+      src="https://i.imgur.com/MK3eW3Am.jpg"
+      alt="Katherine Johnson"
+    />
+  )
 }
