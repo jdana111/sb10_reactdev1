@@ -1,25 +1,16 @@
-function Button({ onClick, children }) {
-  return (
-    <button onClick={e => {
-      e.stopPropagation();
-      onClick();
-    }}>
-      {children}
-    </button>
-  );
-}
+import { useState } from 'react';
 
-export default function Toolbar() {
+export default function Counter() {
+  const [number, setNumber] = useState(0);
+
   return (
-    <div className="Toolbar" onClick={() => {
-      alert('You clicked on the toolbar!');
-    }}>
-      <Button onClick={() => alert('Playing!')}>
-        Play Movie
-      </Button>
-      <Button onClick={() => alert('Uploading!')}>
-        Upload Image
-      </Button>
-    </div>
-  );
+    <>
+      <h1>{number}</h1>
+      <button onClick={() => {
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+      }}>+3</button>
+    </>
+  )
 }
