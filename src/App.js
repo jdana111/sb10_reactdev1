@@ -1,19 +1,27 @@
-
 // NATHO =>
-// a) This component is wackadoodle. Here, we're returning the JSX and then we're trying to tweak it with gitElementById.
-// b) Is it ever legit to modify the DOM uysing document.getElementById('a').className = 'b'? 
-// c) It seems to me that I should always try to configure the JSX elements in the return expression using a variable or state variable. Your thoughts?
-// d) The next commit shows fix. 
-export default function Clock({ time }) {
-  let hours = time.getHours();
+// a) Here's the fix. 
+// b) I added an App() parent component to make it work. 
+export default function App() {
+  const dateTime = new Date();
+  return (
+    <>
+     <Clock dateTime={dateTime} />
+    </>
+  )
+}
+
+function Clock({ dateTime }) {
+  let hours = dateTime.getHours();
+  let className;
+  console.log('hours =', hours)
   if (hours >= 0 && hours <= 6) {
-    document.getElementById('time').className = 'night';
+    className = 'night';
   } else {
-    document.getElementById('time').className = 'day';
+    className = 'day';
   }
   return (
-    <h1 id="time">
-      {time.toLocaleTimeString()}
+    <h1 className={className}>
+      {dateTime.toLocaleTimeString()}
     </h1>
   );
 }
