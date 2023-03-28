@@ -1,11 +1,13 @@
-function Cup({ guest }) {
-  return <h2>Tea cup for guest #{guest}</h2>;
-}
-
-export default function TeaGathering() {
-  let cups = [];
-  for (let i = 1; i <= 12; i++) {
-    cups.push(<Cup key={i} guest={i} />);
+export default function Clock({ time }) {
+  let hours = time.getHours();
+  if (hours >= 0 && hours <= 6) {
+    document.getElementById('time').className = 'night';
+  } else {
+    document.getElementById('time').className = 'day';
   }
-  return cups;
+  return (
+    <h1 id="time">
+      {time.toLocaleTimeString()}
+    </h1>
+  );
 }
