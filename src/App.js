@@ -1,16 +1,30 @@
-import Profile from './Profile.js';
+import { useState } from 'react';
 
-export default function App() {
+export default function SyncedInputs() {
+  const [text, setText] = useState('');
+
+  function handleChange(e) {
+    setText(e.target.value);
+  }
+
   return (
     <>
-      <Profile person={{
-        imageId: 'lrWQx8l',
-        name: 'Subrahmanyan Chandrasekhar',
-      }} />
-      <Profile person={{
-        imageId: 'MK3eW3A',
-        name: 'Creola Katherine Johnson',
-      }} />
+      <Input label="First input" value={text} onChange={handleChange} />
+      <Input label="Second input" value={text} onChange={handleChange} />
     </>
-  )
+  );
+}
+
+function Input({ label, value, onChange }) {
+
+  return (
+    <label>
+      {label}
+      {' '}
+      <input
+        value={value}
+        onChange={onChange}
+      />
+    </label>
+  );
 }
