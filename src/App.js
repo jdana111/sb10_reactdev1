@@ -1,25 +1,51 @@
-import React from "react";
+import React from 'react';
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <Parent>
-        <Child />
-      </Parent>
+    <div className="App">
+      <Header />
+      <Content />
+      <Footer />
     </div>
   );
 }
 
-function Parent({ children }) {
+function Header() {
   return (
-    <>
-      <h1>{children}</h1>
-    </>
+    <header>
+      <h1>Welcome to my website</h1>
+      <Navigation />
+    </header>
   );
 }
 
-function Child() {
+function Navigation() {
   return (
-    "Hello from Child."
-  )
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  );
 }
+
+function Content() {
+  return (
+    <div>
+      <h2>About Me</h2>
+      <p>I'm a web developer based in San Francisco.</p>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <p>Copyright © 2023</p>
+    </footer>
+  );
+}
+
+export default App;
