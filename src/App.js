@@ -1,42 +1,49 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import tasksReducer from './tasksReducer.js';
 
-export default function Scoreboard() {
-  const [isPlayerA, setIsPlayerA] = useState(true);
-  return (
-    <div>
-      {isPlayerA ? (
-        <Counter key={1234} person="Taylor" />
-      ) : (
-        <Counter key="Sarah" person="Sarah" />
-      )}
-      <button onClick={() => {
-        setIsPlayerA(!isPlayerA);
-      }}>
-        Next player!
-      </button>
-    </div>
-  );
-}
+export default function TaskApp() {
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
-function Counter({ person }) {
-  const [score, setScore] = useState(0);
-  const [hover, setHover] = useState(false);
+  function handleAddTask(text) {
+    dispatch({
+      type: 'added',
+      id: nextId++,
+      text: text,
+    });
+  }
 
-  let className = 'counter';
-  if (hover) {
-    className += ' hover';
+  function handleChangeTask(task) {
+    dispatch({
+      type: 'changed',
+      task: task,
+    });
+  }
+
+  function handleDeleteTask(taskId) {
+    dispatch({
+      type: 'deleted',
+      id: taskId,
+    });
   }
 
   return (
-    <div
-      className={className}
-      onPointerEnter={() => setHover(true)}
-      onPointerLeave={() => setHover(false)}
-    >
-      <h1>{person}'s score: {score}</h1>
-      <button onClick={() => setScore(score + 1)}>
-        Add one
-      </button>
-    </div>
+    <>
+      <h1>Prague itinerary</h1>
+      <AddTask onAddTask={handleAddTask} />
+      <TaskList
+        tasks={tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
+      />
+    </>
   );
 }
+
+let nextId = 3;
+const initialTasks = [
+  {id: 0, text: 'Visit Kafka Museum', done: true},
+  {id: 1, text: 'Watch a puppet show', done: false},
+  {id: 2, text: 'Lennon Wall pic', done: false},
+];
